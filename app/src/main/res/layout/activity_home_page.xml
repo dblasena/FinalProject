@@ -10,12 +10,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="dblasena.cis.finalproject.HomePageActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textviewUser" />
+
     <Button
         android:text="LogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:id="@+id/buttonLogOut"
+        android:layout_below="@+id/textviewUser"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/buttonLogOut" />
+        android:layout_marginTop="44dp" />
 </RelativeLayout>

@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
 
     private static final int CIS3334_REQUEST_CODE = 1001;
+    String Email;
 
     EditText editTextEmail;
     EditText editTextPassword;
@@ -70,8 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("CIS3334", "normal login ");
                 signIn(editTextEmail.getText().toString(), editTextPassword.getText().toString());
 
-                editTextEmail.setText("");
-                editTextPassword.setText("");
+
             }
         });
 
@@ -84,8 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                 signIn(editTextEmail.getText().toString(), editTextPassword.getText().toString());
 
-                editTextEmail.setText("");
-                editTextPassword.setText("");
+
             }
         });
     }
@@ -118,8 +117,12 @@ public class MainActivity extends AppCompatActivity {
                             textViewStatus.setText("Error: Unable to create account!");
 
                         } else {
-                            Intent signInIntent = new Intent(getBaseContext(), HomePageActivity.class);
+                            Intent signInIntent = new Intent(MainActivity.this, HomePageActivity.class);
+                            Email = editTextEmail.getText().toString();
+                            signInIntent.putExtra("Email", Email);
                             startActivity(signInIntent);
+                            editTextEmail.setText("");
+                            editTextPassword.setText("");
                         }
 
 
@@ -137,8 +140,12 @@ public class MainActivity extends AppCompatActivity {
                             textViewStatus.setText("Error: Unable to login at this time!");
 
                         } else {
-                            Intent signInIntent = new Intent(getBaseContext(), HomePageActivity.class);
+                            Intent signInIntent = new Intent(MainActivity.this, HomePageActivity.class);
+                            Email = editTextEmail.getText().toString();
+                            signInIntent.putExtra("Email", Email);
                             startActivity(signInIntent);
+                            editTextEmail.setText("");
+                            editTextPassword.setText("");
                         }
                     }
                 });
