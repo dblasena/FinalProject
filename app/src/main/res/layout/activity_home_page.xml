@@ -39,11 +39,22 @@
         android:id="@+id/txtjson" />
 
     <Button
-        android:text="Button"
+        android:text="Search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonLogOut"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/btnhit" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textviewUser"
+        android:layout_toEndOf="@+id/textviewUser"
+        android:id="@+id/editTextName"
+        android:hint="Enter Name" />
 </RelativeLayout>

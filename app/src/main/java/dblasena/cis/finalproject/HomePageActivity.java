@@ -32,6 +32,7 @@ public class HomePageActivity extends AppCompatActivity {
     Button buttonLogOut;
     TextView textviewUser;
     String Email;
+    TextView textviewName;
 
     Button btnHit;
     TextView txtJson;
@@ -45,6 +46,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         buttonLogOut = (Button) findViewById(R.id.buttonLogOut);
         textviewUser = (TextView) findViewById(R.id.textviewUser);
+        textviewName = (TextView) findViewById(R.id.editTextName);
 
 
         Bundle extras = getIntent().getExtras();
@@ -68,7 +70,8 @@ public class HomePageActivity extends AppCompatActivity {
         btnHit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new JsonTask().execute("https://na.api.riotgames.com/api/lol/NA/v1.2/champion?freeToPlay=zac&api_key=RGAPI-e939ea0b-87b0-4e55-8103-f716a44fb6c5");
+                String name = textviewName.getText().toString();
+                new JsonTask().execute("https://na.api.riotgames.com/api/lol/NA/v1.4/summoner/by-name/" + name);
             }
         });
     }
@@ -89,6 +92,8 @@ public class HomePageActivity extends AppCompatActivity {
             HttpURLConnection connection = null;
             BufferedReader reader = null;
 
+            //ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
+
             try {
                 URL url = new URL(params[0]);
                 connection = (HttpURLConnection) url.openConnection();
@@ -104,7 +109,7 @@ public class HomePageActivity extends AppCompatActivity {
 
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line+"\n");
-                    Log.d("Response: ", "> " + line);
+
 
                 }
 
@@ -136,6 +141,7 @@ public class HomePageActivity extends AppCompatActivity {
             if (pd.isShowing()){
                 pd.dismiss();
             }
+
             txtJson.setText(result);
         }
     }

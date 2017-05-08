@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1025517407323-ejmo4c386arp5pdloie61b1mg0e301ad.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dblasena.cis.finalproject",
+            "certificate_hash": "8d1dcaf51ab42344d5b3533aff3348faaeaa52f8"
+          }
+        },
+        {
           "client_id": "1025517407323-spnd8oo1sl0nljeobbse0lefgutvf9lj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -30,6 +38,9 @@
       "api_key": [
         {
           "current_key": "AIzaSyCOCRk9so9idHHiNYDnlLon73F9gxlqKX8"
+        },
+        {
+          "current_key": "AIzaSyCKHob0JVmi7JY_AhlcKBfsma5KLMRWj0I"
         }
       ],
       "services": {
