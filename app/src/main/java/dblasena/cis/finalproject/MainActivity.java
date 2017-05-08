@@ -79,10 +79,12 @@ public class MainActivity extends AppCompatActivity {
         buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("CIS3334", "normal login ");
+                Intent createaccountIntent = new Intent(MainActivity.this, CreateAccountActivity.class);
+                startActivity(createaccountIntent);
 
-                createAccount(editTextEmail.getText().toString(), editTextPassword.getText().toString());
+               // createAccount(editTextEmail.getText().toString(), editTextPassword.getText().toString());
 
-                signIn(editTextEmail.getText().toString(), editTextPassword.getText().toString());
+                //signIn(editTextEmail.getText().toString(), editTextPassword.getText().toString());
 
 
             }

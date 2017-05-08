@@ -18,43 +18,42 @@
         android:layout_alignParentStart="true"
         android:id="@+id/textviewUser" />
 
-    <Button
-        android:text="LogOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonLogOut"
-        android:layout_below="@+id/textviewUser"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="44dp" />
-
     <TextView
-        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonLogOut"
-        android:layout_toRightOf="@+id/textviewUser"
-        android:layout_toEndOf="@+id/textviewUser"
-        android:layout_marginTop="25dp"
-        android:id="@+id/txtjson" />
-
-    <Button
-        android:text="Search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonLogOut"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/btnhit" />
+        android:layout_marginTop="99dp"
+        android:id="@+id/txtjson"
+        android:layout_below="@+id/btnhit"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textviewUser"
-        android:layout_toEndOf="@+id/textviewUser"
         android:id="@+id/editTextName"
-        android:hint="Enter Name" />
+        android:hint="Enter Name"
+        android:layout_below="@+id/textviewUser"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="38dp" />
+
+    <Button
+        android:text="Search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnhit"
+        android:layout_below="@+id/editTextName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="LogOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonLogOut"
+        android:layout_below="@+id/btnhit"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

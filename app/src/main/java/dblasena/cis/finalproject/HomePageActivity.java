@@ -71,7 +71,8 @@ public class HomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String name = textviewName.getText().toString();
-                new JsonTask().execute("https://na.api.riotgames.com/api/lol/NA/v1.4/summoner/by-name/" + name);
+                name = name.replace(" ", "");
+                new JsonTask().execute("https://na.api.riotgames.com/api/lol/NA/v1.4/summoner/by-name/" + name +"?api_key=RGAPI-e939ea0b-87b0-4e55-8103-f716a44fb6c5");
             }
         });
     }
@@ -81,7 +82,7 @@ public class HomePageActivity extends AppCompatActivity {
             super.onPreExecute();
 
             pd = new ProgressDialog(HomePageActivity.this);
-            pd.setMessage("Please wait");
+
             pd.setCancelable(false);
             pd.show();
         }
@@ -141,7 +142,8 @@ public class HomePageActivity extends AppCompatActivity {
             if (pd.isShowing()){
                 pd.dismiss();
             }
-
+            result = result.replace("{","");
+            result = result.replace("}","");
             txtJson.setText(result);
         }
     }
