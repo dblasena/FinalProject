@@ -19,7 +19,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/editTextEmail"
-        android:hint="Email" />
+        android:hint="@string/email" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -30,10 +30,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/editTextPassword"
-        android:hint="Password" />
+        android:hint="@string/password" />
 
     <Button
-        android:text="Login"
+        android:text="@string/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextPassword"
@@ -42,7 +42,7 @@
         android:id="@+id/buttonLogin" />
 
     <Button
-        android:text="Create Account"
+        android:text="@string/create_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/buttonLogin"
