@@ -72,11 +72,14 @@ public class HomePageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String name = textviewName.getText().toString();
                 name = name.replace(" ", "");
-                new JsonTask().execute("https://na.api.riotgames.com/api/lol/NA/v1.4/summoner/by-name/" + name +"?api_key=RGAPI-e939ea0b-87b0-4e55-8103-f716a44fb6c5");
+
+                 new JsonTask().execute("https://na.api.riotgames.com/api/lol/NA/v1.4/summoner/by-name/" + name +"?api_key=RGAPI-e939ea0b-87b0-4e55-8103-f716a44fb6c5");
+                //new JsonTask().execute();
             }
         });
     }
     private class JsonTask extends AsyncTask<String, String, String> {
+    //private class JsonTask extends AsyncTask<Void, Void, JSONObject> {
 
         protected void onPreExecute() {
             super.onPreExecute();
@@ -88,15 +91,19 @@ public class HomePageActivity extends AppCompatActivity {
         }
 
         protected String doInBackground(String... params) {
+           // protected JSONObject doInBackground(Void... params) {
 
 
             HttpURLConnection connection = null;
             BufferedReader reader = null;
 
+                String url2 = "https://na.api.riotgames.com/api/lol/NA/v1.3/stats/by-summoner/36583485/summary?season=SEASON3&api_key=RGAPI-e939ea0b-87b0-4e55-8103-f716a44fb6c5";
+
             //ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
 
             try {
                 URL url = new URL(params[0]);
+                //URL url = new URL(url2);
                 connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
 
@@ -105,20 +112,19 @@ public class HomePageActivity extends AppCompatActivity {
 
                 reader = new BufferedReader(new InputStreamReader(stream));
 
-                StringBuffer buffer = new StringBuffer();
+                StringBuilder buffer = new StringBuilder();
                 String line = "";
 
                 while ((line = reader.readLine()) != null) {
-                    buffer.append(line+"\n");
+                    buffer.append(line).append("\n");
 
 
                 }
 
-                return buffer.toString();
+               return buffer.toString();
+                //return new JSONObject(buffer.toString());
 
 
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -138,6 +144,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
+           // protected void onPostExecute(JSONObject result) {
             super.onPostExecute(result);
             if (pd.isShowing()){
                 pd.dismiss();
@@ -145,7 +152,20 @@ public class HomePageActivity extends AppCompatActivity {
             result = result.replace("{","");
             result = result.replace("}","");
             txtJson.setText(result);
+           /* String a = null;
+            try {
+                a = result.getString("summonerId");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            txtJson.setText(a);
+            **/
+
+
+            textviewName.setText("");
         }
+
+
     }
 
 
