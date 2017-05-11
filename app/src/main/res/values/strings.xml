@@ -11,4 +11,7 @@
     <string name="search">Search</string>
     <string name="logout">LogOut</string>
     <string name="PasswordMatch">Password do not match, Please re-enter!</string>
+    <string name="LogError">Unable to Log in at this time</string>
+    <string name="WrongUserPass">Error: incorrect username or password!</string>
+    <string name="LoggedInAs">You are now logged as </string>
 </resources>

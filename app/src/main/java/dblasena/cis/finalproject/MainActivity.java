@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                         if (!task.isSuccessful()) {
                             editTextEmail.setText("");
                             editTextPassword.setText("");
-                            textViewStatus.setText("Error: incorrect username or password!");
+                            textViewStatus.setText(R.string.WrongUserPass);
 
                         } else {
                             Intent signInIntent = new Intent(MainActivity.this, HomePageActivity.class);

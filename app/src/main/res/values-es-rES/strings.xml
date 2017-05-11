@@ -11,4 +11,8 @@
     <string name="enter_a_summoner_name">Introduzca un nombre de invocador</string>
     <string name="search">Buscar</string>
     <string name="logout">Cerrar sesión</string>
+    <string name="PasswordMatch">La contraseña no coincide, ¡vuelve a ingresar!</string>
+    <string name="LogError">No se puede iniciar sesión en este momento</string>
+    <string name="WrongUserPass">Error: nombre de usuario o contraseña incorrectos!</string>
+    <string name="LoggedInAs">Ahora estás registrado como </string>
 </resources>

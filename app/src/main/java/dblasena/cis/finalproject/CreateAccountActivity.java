@@ -90,7 +90,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 createAccount(edittextCreateEmail.getText().toString(), editTextCreatePassword.getText().toString());
 
                 else{
-                    textviewStatus.setText("Password do not match, Please re-enter!");
+                    textviewStatus.setText(R.string.PasswordMatch);
                     editTextCreatePassword.setText("");
                     editTextCreatePassword2.setText("");
 
@@ -124,7 +124,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
 
                         if (!task.isSuccessful()) {
-                            textviewStatus.setText("Unable to Log in at this time");
+                            textviewStatus.setText(R.string.LogError);
 
 
                         } else {

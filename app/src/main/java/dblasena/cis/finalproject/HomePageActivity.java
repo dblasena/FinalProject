@@ -52,7 +52,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         Email = extras.getString("Email");
-        textviewUser.setText("You are now logged as " + Email);
+        textviewUser.setText(R.string.LoggedInAs + Email);
 
         btnHit = (Button) findViewById(R.id.btnhit);
         txtJson = (TextView) findViewById(R.id.txtjson);
