@@ -85,7 +85,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("CIS3334", "normal login ");
 
-                if(Objects.equals(editTextCreatePassword.toString(), editTextCreatePassword2.toString()))
+                if((editTextCreatePassword.getText().toString().equals(editTextCreatePassword2.getText().toString())))
 
                 createAccount(edittextCreateEmail.getText().toString(), editTextCreatePassword.getText().toString());
 

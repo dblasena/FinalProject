@@ -54,6 +54,7 @@ public class HomePageActivity extends AppCompatActivity {
         Email = extras.getString("Email");
         textviewUser.setText(R.string.LoggedInAs + Email);
 
+
         btnHit = (Button) findViewById(R.id.btnhit);
         txtJson = (TextView) findViewById(R.id.txtjson);
 
