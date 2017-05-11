@@ -17,6 +17,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+
+/**
+ * Default activity that is shown.
+ * Has the user either log in or create an acount. These two features will interact with firebase and if the user selects the create account function,
+ * they will be directed to the createAccountActivity. The methods in this are the basic firebase required methods for signing in and a return method for when the user logs out and returns the intent.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final int CIS3334_REQUEST_CODE = 1001;
@@ -33,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
+    /**
+     * OnCreate will create the create the connections to the xml file for this activity. This will also set up the firebase connection and create the button handlers.
+     * It will also set up the neccessary intents in the button handlers.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,22 +93,24 @@ public class MainActivity extends AppCompatActivity {
                 Intent createaccountIntent = new Intent(MainActivity.this, CreateAccountActivity.class);
                 startActivity(createaccountIntent);
 
-               // createAccount(editTextEmail.getText().toString(), editTextPassword.getText().toString());
-
-                //signIn(editTextEmail.getText().toString(), editTextPassword.getText().toString());
 
 
             }
         });
     }
 
-
+    /**
+     * Adds an authentication listener for the firebase connection. This is a standard method for all of firebase.
+     */
     @Override
     public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
     }
 
+    /**
+     * removes the authentication state listener from the firebase listener. Standard firebase method.
+     */
     @Override
     public void onStop() {
         super.onStop();
@@ -106,34 +119,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     /**
-    private void createAccount(String email, String password) {
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-
-                        if (!task.isSuccessful()) {
-                            textViewStatus.setText("Error: Unable to create account!");
-
-                        } else {
-                            Intent signInIntent = new Intent(MainActivity.this, HomePageActivity.class);
-                            Email = editTextEmail.getText().toString();
-                            signInIntent.putExtra("Email", Email);
-                            startActivity(signInIntent);
-                            editTextEmail.setText("");
-                            editTextPassword.setText("");
-                        }
-
-
-                    }
-                });
-
-    }
-     **/
-
+     * This method will use the signinwithEmailandPassword firebase built in method to check the user name and password that the user has entered,
+     * If it is correct then they will be signed in and taken to the HomePageActivity. If it is not then they will be given an error message instead
+     * @param email String that is obtained from the button listeners
+     * @param password String that is obtained from the button listener
+     */
     private void signIn(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -141,7 +133,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (!task.isSuccessful()) {
-                            textViewStatus.setText("Error: Unable to login at this time!");
+                            editTextEmail.setText("");
+                            editTextPassword.setText("");
+                            textViewStatus.setText("Error: incorrect username or password!");
 
                         } else {
                             Intent signInIntent = new Intent(MainActivity.this, HomePageActivity.class);
@@ -157,12 +151,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * When this activity is returned to it will be when the user has logged out.
+     * It will display a toast message saying that they are now logged out.
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CIS3334_REQUEST_CODE) {
+
             Toast.makeText(getApplicationContext(), "Message to display", Toast.LENGTH_LONG)
                     .show();
-        }
+
     }
 }
 

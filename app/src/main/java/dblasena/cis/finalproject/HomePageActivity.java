@@ -10,23 +10,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.io.BufferedInputStream;
+
+
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 
+
+/**
+ * This class will run an async task to accesw the RiotGames api and return will the requested information. It will take the information parse the JSON and display it to the user.
+ * To get this to run the user must enter a valid summoner name of the player and click the searc button. This will beiggin the process of retrieving parsing and displaying the data.
+ */
 public class HomePageActivity extends AppCompatActivity {
 
     Button buttonLogOut;
@@ -38,7 +36,10 @@ public class HomePageActivity extends AppCompatActivity {
     TextView txtJson;
     ProgressDialog pd;
 
-
+    /**
+     * This method creates the connections to the xml file along with creating all of the button handlers.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,9 +79,19 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    /**
+     * This class is the async task that is ran to retrieve the information on the selected player and return it to be displayed.
+     * In this method the commented out sections are used to run this to return the information as a JSONObject rather than a string. I am not sure which one is better to use.
+     * This make a call to the api and return the information.
+     */
     private class JsonTask extends AsyncTask<String, String, String> {
     //private class JsonTask extends AsyncTask<Void, Void, JSONObject> {
 
+        /**
+         * When the task is first started it will create a progress dialog that will keep track of how lojng it takes for this to run.
+         */
         protected void onPreExecute() {
             super.onPreExecute();
 
@@ -90,6 +101,13 @@ public class HomePageActivity extends AppCompatActivity {
             pd.show();
         }
 
+        /**
+         * This method is where most of the work is done. It will create the connection with the web and retrieve the information from the url.
+         * It will then read each line of the JSON and for a string out of it that is able to be displayed.
+         * The connection to the internet and the reader are then closed when completed.
+         * @param params
+         * @return This will either be a string of the JSON or if one of the exceptions are thrown then there will not be a returned value.
+         */
         protected String doInBackground(String... params) {
            // protected JSONObject doInBackground(Void... params) {
 
@@ -97,13 +115,16 @@ public class HomePageActivity extends AppCompatActivity {
             HttpURLConnection connection = null;
             BufferedReader reader = null;
 
-                String url2 = "https://na.api.riotgames.com/api/lol/NA/v1.3/stats/by-summoner/36583485/summary?season=SEASON3&api_key=RGAPI-e939ea0b-87b0-4e55-8103-f716a44fb6c5";
+               // String url2 = "https://na.api.riotgames.com/api/lol/NA/v1.3/stats/by-summoner/36583485/summary?season=SEASON3&api_key=RGAPI-e939ea0b-87b0-4e55-8103-f716a44fb6c5";
 
             //ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
 
             try {
+
                 URL url = new URL(params[0]);
                 //URL url = new URL(url2);
+
+
                 connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
 
@@ -142,9 +163,16 @@ public class HomePageActivity extends AppCompatActivity {
             return null;
         }
 
+        /**
+         * This method will be ran when there is a returned value from the doinBackground.
+         * It will remove the progress display and set a text field with the information on the searched name.
+         * @param result This is the string information that is sent from the doinBackground method
+         */
         @Override
         protected void onPostExecute(String result) {
            // protected void onPostExecute(JSONObject result) {
+
+
             super.onPostExecute(result);
             if (pd.isShowing()){
                 pd.dismiss();
@@ -152,7 +180,9 @@ public class HomePageActivity extends AppCompatActivity {
             result = result.replace("{","");
             result = result.replace("}","");
             txtJson.setText(result);
-           /* String a = null;
+
+
+            /* String a = null;
             try {
                 a = result.getString("summonerId");
             } catch (JSONException e) {
@@ -168,13 +198,9 @@ public class HomePageActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
-
-
-
+    /**
+     * This method is called when the user wants to log out. They will log out of the Firebase and be returned to the mainActivity with login and create account options.
+     */
     public void finish() {
         Intent intent = new Intent();
 

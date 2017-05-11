@@ -27,20 +27,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editTextName"
-        android:hint="Enter a Summoner Name"
-        android:layout_below="@+id/textviewUser"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="38dp" />
-
     <Button
-        android:text="Search"
+        android:text="@string/search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnhit"
@@ -49,11 +37,23 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:text="LogOut"
+        android:text="@string/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonLogOut"
         android:layout_below="@+id/btnhit"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editTextName"
+        android:hint="@string/enter_a_summoner_name"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/textviewUser"
+        android:layout_toRightOf="@+id/textviewUser"
+        android:layout_toEndOf="@+id/textviewUser" />
 </RelativeLayout>
