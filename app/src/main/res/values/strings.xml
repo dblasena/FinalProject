@@ -10,4 +10,5 @@
     <string name="enter_a_summoner_name">Enter a Summoner Name</string>
     <string name="search">Search</string>
     <string name="logout">LogOut</string>
+    <string name="PasswordMatch">Password do not match, Please re-enter!</string>
 </resources>

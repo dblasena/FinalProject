@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Proyecto final</string>
+    <string name="create_account">Crear una cuenta</string>
+    <string name="email">Email</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="password">Contraseña</string>
+    <string name="back">Regreso</string>
+    <string name="re_enter_password">Escriba la contraseña otra vez</string>
+    <string name="submit">Enviar</string>
+    <string name="enter_a_summoner_name">Introduzca un nombre de invocador</string>
+    <string name="search">Buscar</string>
+    <string name="logout">Cerrar sesión</string>
+</resources>
